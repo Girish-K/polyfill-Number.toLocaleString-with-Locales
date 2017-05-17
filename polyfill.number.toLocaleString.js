@@ -87,7 +87,7 @@
 			};
 		sNum = +sNum;
 		if(sNum >= 1000) {
-			return replaceSeparators(Math.round(sNum / 1000) + '', hundredSeperators) + ',' + getLast3Digits((sNum % 1000) + '');
+			return replaceSeparators(Math.floor(sNum / 1000) + '', hundredSeperators) + ',' + getLast3Digits((sNum % 1000) + '');
 		} else {
 			return replaceSeparators(sNum + '', thoudandSeperators);
 		}
@@ -283,4 +283,3 @@
 		return sNum;
 	};
 }());
-
