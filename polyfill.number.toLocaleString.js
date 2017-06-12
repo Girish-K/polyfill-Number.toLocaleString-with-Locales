@@ -11,7 +11,11 @@
 		}
 		return false;
 	}
+	var roundOff = function (number, precision) {
+		return +((+number).toFixed(precision));
+	};
 	var replaceSeparators = function(sNum, separators) {
+		sNum = '' + roundOff(sNum, 3);
 		var sNumParts = sNum.split('.');
 		if(separators && separators.thousands) {
 			sNumParts[0] = sNumParts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1" + separators.thousands);
@@ -22,6 +26,7 @@
 		return sNum;
 	};
 	var getLast3Digits = function(sNum) {
+		sNum = '' + roundOff(sNum, 3);
 		var sNumParts = sNum.split('.');
 		switch(sNumParts[0].length) {
 			case 0:
@@ -280,6 +285,7 @@
 				});
 			}
 		}
-		return sNum;
+		return '' + sNum;
 	};
 }());
+
