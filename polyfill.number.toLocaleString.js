@@ -265,7 +265,7 @@
 	Number.prototype.toLocaleString = function(locale, options) {
 		if(locale && locale.length < 2) throw new RangeError("Invalid language tag: " + locale);
 		var sNum;
-		if(options && options.minimumFractionDigits) {
+		if(options && options.minimumFractionDigits !== undefined) {
 			sNum = this.toFixed(options.minimumFractionDigits);
 		} else {
 			sNum = this.toString();
