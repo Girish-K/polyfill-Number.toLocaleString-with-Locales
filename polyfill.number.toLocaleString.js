@@ -121,7 +121,8 @@
 		hu: spaceThousCommaDec,
 		"hu-HU": spaceThousCommaDec,
 		"da-DK": dotThousCommaDec,
-		"nb-NO": spaceThousCommaDec
+		"nb-NO": spaceThousCommaDec,
+		"sv-SE": spaceThousCommaDec
 	};
 	var currencyFormatMap = {
 		en: "pre",
@@ -138,7 +139,8 @@
 		hu: "post",
 		"hu-HU": "post",
 		"da-DK": "post",
-		"nb-NO": "post"
+		"nb-NO": "post",
+		"sv-SE": "post"
 	};
 	var currencySymbols = {
 		"afn": "؋",
