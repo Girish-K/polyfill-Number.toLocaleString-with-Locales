@@ -169,7 +169,7 @@
 		"hrk": "kn",
 		"cup": "₱",
 		"czk": "Kč",
-		"dkk": "kr",
+		"dkk": "kr.",
 		"dop": "RD$",
 		"xcd": "$",
 		"egp": "£",
