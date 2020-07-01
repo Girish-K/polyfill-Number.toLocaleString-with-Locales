@@ -129,6 +129,8 @@
 		it: "post",
 		fr: "post",
 		de: "post",
+		pl: "post",
+		"es-ES": "post",
 		"de-DE": "post",
 		"de-AT": "prespace",
 		"de-CH": "prespace",
