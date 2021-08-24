@@ -14,13 +14,16 @@
 	var roundOff = function (number, precision) {
 		return +((+number).toFixed(precision));
 	};
-	var replaceSeparators = function(sNum, separators) {
+	var replaceSeparators = function(sNum, separators, options) {
 		sNum = '' + roundOff(sNum, 3);
 		var sNumParts = sNum.split('.');
 		if(separators && separators.thousands) {
 			sNumParts[0] = sNumParts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1" + separators.thousands);
 		} else if(separators && separators.hundreds) {
 			sNumParts[0] = sNumParts[0].replace(/(\d)(?=(\d\d)+(?!\d))/g, "$1" + separators.hundreds);
+		}
+		if(sNumParts.length === 2 && options && options.minimumFractionDigits > 0) {
+			sNumParts[1] = sNumParts[1].padEnd(options.minimumFractionDigits, '0');
 		}
 		sNum = sNumParts.join(separators.decimal);
 		return sNum;
@@ -60,26 +63,26 @@
 		}
 		return map[match];
 	};
-	var dotThousCommaDec = function(sNum) {
+	var dotThousCommaDec = function(sNum, options) {
 		var separators = {
 			decimal: ',',
 			thousands: '.'
 		};
-		return replaceSeparators(sNum, separators);
+		return replaceSeparators(sNum, separators, options);
 	};
-	var commaThousDotDec = function(sNum) {
+	var commaThousDotDec = function(sNum, options) {
 		var separators = {
 			decimal: '.',
 			thousands: ','
 		};
-		return replaceSeparators(sNum, separators);
+		return replaceSeparators(sNum, separators, options);
 	};
-	var spaceThousCommaDec = function(sNum) {
+	var spaceThousCommaDec = function(sNum, options) {
 		var seperators = {
 			decimal: ',',
 			thousands: '\u00A0'
 		};
-		return replaceSeparators(sNum, seperators);
+		return replaceSeparators(sNum, seperators, options);
 	};
 	var spaceHundredsCommaThousCommaDec = function(sNum) {
 		var hundredSeperators = {
@@ -97,12 +100,12 @@
 			return replaceSeparators(sNum + '', thoudandSeperators);
 		}
 	};
-	var apostrophThousDotDec = function(sNum) {
+	var apostrophThousDotDec = function(sNum, options) {
 		var seperators = {
 			decimal: '.',
 			thousands: '\u0027'
 		};
-		return replaceSeparators(sNum, seperators);
+		return replaceSeparators(sNum, seperators, options);
 	};
 	var transformForLocale = {
 		en: commaThousDotDec,
@@ -292,4 +295,3 @@
 		return '' + sNum;
 	};
 }());
-
