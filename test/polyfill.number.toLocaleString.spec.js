@@ -1,3 +1,5 @@
+require('../polyfill.number.toLocaleString')
+
 const defaultLocales = 'en';
 
 describe('Number.toLocaleString polyfill', () => {
@@ -9,6 +11,6 @@ describe('Number.toLocaleString polyfill', () => {
 
         expect(withFraction.toLocaleString(defaultLocales, {minimumFractionDigits: 2})).toEqual('42.10')
 
-        expect(withFraction.toLocaleString(defaultLocales,)).toEqual('42.1')
+        expect(withFraction.toLocaleString(defaultLocales)).toEqual('42.1')
     })
 });
