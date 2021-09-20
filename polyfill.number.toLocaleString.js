@@ -22,7 +22,10 @@
 		} else if(separators && separators.hundreds) {
 			sNumParts[0] = sNumParts[0].replace(/(\d)(?=(\d\d)+(?!\d))/g, "$1" + separators.hundreds);
 		}
-		if(sNumParts.length === 2 && options && options.minimumFractionDigits > 0) {
+		if(options && options.minimumFractionDigits > 0) {
+			if (sNumParts.length !== 2) {
+				sNumParts[1] = '';
+			}
 			sNumParts[1] = sNumParts[1].padEnd(options.minimumFractionDigits, '0');
 		}
 		sNum = sNumParts.join(separators.decimal);
