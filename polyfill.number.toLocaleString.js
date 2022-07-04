@@ -22,7 +22,10 @@
 		} else if(separators && separators.hundreds) {
 			sNumParts[0] = sNumParts[0].replace(/(\d)(?=(\d\d)+(?!\d))/g, "$1" + separators.hundreds);
 		}
-		if(sNumParts.length === 2 && options && options.minimumFractionDigits > 0) {
+		if(options && options.minimumFractionDigits > 0) {
+			if (sNumParts.length !== 2) {
+				sNumParts[1] = '';
+			}
 			sNumParts[1] = sNumParts[1].padEnd(options.minimumFractionDigits, '0');
 		}
 		sNum = sNumParts.join(separators.decimal);
@@ -149,12 +152,13 @@
 	};
 	var currencySymbols = {
 		"afn": "؋",
-		"ars": "$",
+		"ars": "ARS",
 		"awg": "ƒ",
-		"aud": "$",
+		"aud": "A$",
 		"azn": "₼",
 		"bsd": "$",
 		"bbd": "$",
+		"bdt": "BDT",
 		"byr": "p.",
 		"bzd": "BZ$",
 		"bmd": "$",
@@ -165,9 +169,9 @@
 		"brl": "R$",
 		"bnd": "$",
 		"khr": "៛",
-		"cad": "$",
+		"cad": "CA$",
 		"kyd": "$",
-		"clp": "$",
+		"clp": "CLP",
 		"cny": "¥",
 		"cop": "$",
 		"crc": "₡",
@@ -189,7 +193,7 @@
 		"ggp": "£",
 		"gyd": "$",
 		"hnl": "L",
-		"hkd": "$",
+		"hkd": "HK$",
 		"huf": "Ft",
 		"isk": "kr",
 		"inr": "₹",
@@ -219,7 +223,7 @@
 		"nad": "$",
 		"npr": "₨",
 		"ang": "ƒ",
-		"nzd": "$",
+		"nzd": "NZ$",
 		"nio": "C$",
 		"ngn": "₦",
 		"nok": "kr",
@@ -237,7 +241,7 @@
 		"sar": "﷼",
 		"rsd": "Дин.",
 		"scr": "₨",
-		"sgd": "$",
+		"sgd": "S$",
 		"sbd": "$",
 		"sos": "S",
 		"zar": "R",
